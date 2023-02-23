@@ -1,6 +1,12 @@
 <h2>login</h2>
 
 <form class="form login-form">
+
+<!-- 🦄 can I conditionally render an alert for invalid login? 🦄 -->
+    {{!-- {{#if invalid_login }}
+    <p>Incorrect email or password, please try again</p>
+    {{/if}} --}}
+
     <div class="form-group">
         <label for="email-login">email:</label>
         <input class="form-input" type="text" id="email-login" />
@@ -16,3 +22,5 @@
         <p>New the site? Create an account <a href="/signup">here</a></p>
     </div>
 </form>
+
+<script src="/js/login.js"></script>
