@@ -1,7 +1,11 @@
 <div class="row">
-  <div class="col-md-6">
-    
-    <p>New to the site? Sign up <a href="/signup">here</a></p>
+  <div class="col-sm-12">
+    {{#if signup }}
+    {{> 'signup'}}
+    {{else}}
+    {{> 'login'}}
+    {{/if}}
+
   </div>
 </div>
 

@@ -17,7 +17,8 @@ router.get('/', async (req, res) => {
 
   router.get('/login', async (req, res) => {
     try {
-        res.render('login', {
+        res.render('login-signup', {
+            signup: false,
             logged_in: req.session.logged_in 
         });
     } catch (err) {
@@ -27,7 +28,8 @@ router.get('/', async (req, res) => {
 
   router.get('/signup', async (req, res) => {
     try {
-        res.render('signup', {
+        res.render('login-signup', {
+            signup: true,
             logged_in: req.session.logged_in 
         });
     } catch (err) {
