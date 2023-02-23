@@ -4,18 +4,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-      // Get all projects and JOIN with user data
-    //   const projectData = await Project.findAll({
-    //     include: [
-    //       {
-    //         model: User,
-    //         attributes: ['name'],
-    //       },
-    //     ],
-    //   });
-  
-    //   // Serialize data so the template can read it
-    //   const projects = projectData.map((project) => project.get({ plain: true }));
+// add code to get all blog posts and render to page
   
       // Pass serialized data and session flag into template
       res.render('homepage', { 
@@ -28,12 +17,28 @@ router.get('/', async (req, res) => {
 
   router.get('/login', async (req, res) => {
     try {
-        res.render('login', {
+        res.render('login-signup', {
+            signup: false,
             logged_in: req.session.logged_in 
         });
     } catch (err) {
         res.status(500).json(err);
     }
   });
+
+  router.get('/signup', async (req, res) => {
+    try {
+        res.render('login-signup', {
+            signup: true,
+            logged_in: req.session.logged_in 
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+  });
+
+  router.get('/dashboard', withAuth, async (req, res) => {
+
+  })
 
   module.exports = router;

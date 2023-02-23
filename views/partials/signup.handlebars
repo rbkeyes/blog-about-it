@@ -1,0 +1,31 @@
+<h2>create an account</h2>
+
+<form class="form signup-form">
+
+<!-- 🦄 can I conditionally render an alert for invalid login? 🦄 -->
+    {{!-- {{#if invalid_login }}
+    <p>Incorrect email or password, please try again</p>
+    {{/if}} --}}
+    
+    <div class="form-group">
+        <label for="name-signup">name:</label>
+        <input class="form-input" type="text" id="name-signup" />
+    </div>
+    <div class="form-group">
+        <label for="email-signup">email:</label>
+        <input class="form-input" type="text" id="email-signup" />
+    </div>
+    <div class="form-group">
+        <label for="password-signup">password:</label>
+        <input class="form-input" type="password" id="password-signup" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">sign up</button>
+    </div>
+    <div class="form-link">
+        <p>Already have an account? Log in <a href="/login">here</a></p>
+    </div>
+</form>
+
+
+<script src="/js/signup.js"></script>
