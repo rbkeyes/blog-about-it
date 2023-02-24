@@ -26,14 +26,17 @@ router.get('/write', withAuth, async (req, res) => {
 
 router.post('/publish', withAuth, async (req,res) => {
     try {
-        let newBlog = await Article.create({
-
-        })
+        const newContent = await Article.create({
+            ...req.body,
+            user_id: req.session.user_id,
+            logged_in: req.session.logged_in,
+        });
+        res.status(200).json(newContent);
+    console.log(newContent);
     } catch (err) {
         res.status(400).json(err);
     };
 });
-
 
 
 
