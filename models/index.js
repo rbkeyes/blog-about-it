@@ -12,12 +12,12 @@ Content.belongsTo(User, {
 });
 
 Content.hasMany(Comment, {
-  foreignKey: 'Content_id',
+  foreignKey: 'content_id',
   onDelete: 'CASCADE'
 });
 
 Comment.belongsTo(Content, {
-  foreignKey: 'Content_id'
+  foreignKey: 'content_id'
 });
 
 User.hasMany(Comment, {

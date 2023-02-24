@@ -14,13 +14,15 @@ router.get('/users', async (req, res) => {
 // 🦄 test route to be able to check if post /publish is working 🦄
 router.get('/content', async (req, res) => {
     try {
-        const recentContent = await Content.findAll(
-            // include: {
-            //     model: 'user',
-            //     attributes: ['name'],
-            // },
-        );
-        res.status(200).json(recentContent);
+        const contentsData = await Content.findAll({
+            include: [
+              {
+                model: User,
+                attributes: ['username'],
+              }
+            ]
+          });
+        res.status(200).json(contentsData);
 
     } catch (err) {
         console.log(err);

@@ -1,21 +1,33 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Content } = require('../models');
 const withAuth = require('../utils/auth');
 
+// 🏡 home route
 router.get('/', async (req, res) => {
     try {
-// get Content
-// const contentsData = await Content.findAll();
 
-// if (!contentsData) {
-//   res.status(404).json('No contents to display');
-// };
+// get content from database, incuding user name that matches user_id
+const contentsData = await Content.findAll({
+  include: [
+    {
+      model: User,
+      attributes: ['username'],
+    }
+  ]
+});
+console.log(contentsData);
+// 404 status if no contentsData
+if (!contentsData) {
+  res.status(404).json('No contents to display');
+};
 
-// const blogs = contentsData.map((blog) => blog.get({plain: true}));
-// console.log(blogs);
+// map results to display on page
+const blogs = contentsData.map((blog) => blog.get({plain: true}));
+console.log(blogs);
 
       // Pass serialized data and session flag into template
       res.render('homepage', { 
+        blogs,
         id: req.session.id,
         logged_in: req.session.logged_in 
       });
