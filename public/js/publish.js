@@ -2,23 +2,24 @@
 const blogFormHandler = async (event) => {
     event.preventDefault();
 
+    // get elements from document
     const title = document.getElementById('blog-title').value.trim();
-    const content = document.getElementById('blog-content').value.trim();
-    
-    console.log({title, content})
+    const body = document.getElementById('blog-body').value.trim();
+    console.log({title, body})
 
     try {
-        if (title && content) {
+        // fetch route if there is a title & body
+        if (title && body) {
             const response = await fetch('/api/dashboard/publish', {
                 method: 'POST',
-                body: JSON.stringify({ title, content }),
+                body: JSON.stringify({ title, body }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
             if (response.ok) {
                 console.log(response);
                 console.log('Success!')
-                document.location.replace('/api/dashboard');
+                window.location.href='/api/dashboard';
                 return;
             };
         };

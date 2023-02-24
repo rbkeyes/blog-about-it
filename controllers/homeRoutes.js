@@ -4,8 +4,16 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-// add code to get all blog posts and render to page
-  
+// get Content
+// const contentsData = await Content.findAll();
+
+// if (!contentsData) {
+//   res.status(404).json('No contents to display');
+// };
+
+// const blogs = contentsData.map((blog) => blog.get({plain: true}));
+// console.log(blogs);
+
       // Pass serialized data and session flag into template
       res.render('homepage', { 
         id: req.session.id,
