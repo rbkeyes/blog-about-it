@@ -13,7 +13,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       console.log(response);
-      window.location.href='/api/dashboard/';
+      window.location.href='/';
     } else {
       alert('Failed to log in.');
     }
