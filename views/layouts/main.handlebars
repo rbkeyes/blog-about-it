@@ -12,18 +12,16 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      {{#if dashboard}}
-      <h1>My Dashboard</h1>
-      {{else}}
       <h1>blog about it</h1>
-      {{/if}}
       <nav>
-        <a href="/">home</a>
-        <a href="/api/dashboard">dashboard</a>
-        <!-- Conditionally render login or logout links -->
+        <a href="/" id="home">home</a>
+
+        <!-- Conditionally render login or logout links, add link for user dashboard -->
         {{#if logged_in}}
+        <a href="/api/dashboard/{{user_id}}" id="dashboard">dashboard</a>
         <button class="no-button" id="logout">logout</button>
         {{else}}
+        <a href="/login">dashboard</a>
         <a href="/login">login</a>
         {{/if}}
       </nav>
@@ -33,11 +31,11 @@
       {{{ body }}}
     </main>
     <footer>
-      <h5>blog about it</h5>
+      {{!-- <h5>blog about it</h5>
       <nav>
         <a href="/">home</a>
         <a href="/api/dashboard">dashboard</a>
-      </nav>
+      </nav> --}}
     </footer>
   </div>
 

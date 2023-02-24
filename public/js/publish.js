@@ -5,7 +5,15 @@ const blogFormHandler = async (event) => {
     // get elements from document
     const title = document.getElementById('blog-title').value.trim();
     const body = document.getElementById('blog-body').value.trim();
-    console.log({title, body})
+
+    // get userId from pathname
+    const getUserId = () => {
+        const routeArr = window.location.pathname.split('/');
+            return routeArr[routeArr.length-1];
+        };
+    
+    const user_id = getUserId();
+
 
     try {
         // fetch route if there is a title & body
@@ -19,7 +27,7 @@ const blogFormHandler = async (event) => {
             if (response.ok) {
                 console.log(response);
                 console.log('Success!')
-                window.location.href='/api/dashboard';
+                window.location.href=`/api/dashboard/${user_id}`;
                 return;
             };
         };
