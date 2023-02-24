@@ -3,21 +3,19 @@ const { User, Content, Comment } = require('../../models');
 const withAuth = require('../../utils/auth')
 
 // user dashboard by user.id
-router.get('/', withAuth, async (req, res) => {
-    console.log(req.params);
+router.get('/:id', withAuth, async (req, res) => {
 
     // get content from database, incuding user name that matches user_id
 const contentsData = await Content.findAll({
-    // where:
-    // {
-    //     user_id: req.params.user_id
-    // },
     include: 
-      {
+    {
         model: User,
         attributes: ['username'],
-      }
-    
+    }, 
+    where:
+    {
+        user_id: req.params.id
+    },
   });
 
   // 404 status if no contentsData
