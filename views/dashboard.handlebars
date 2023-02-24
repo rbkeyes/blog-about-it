@@ -1,0 +1,12 @@
+<div class="col-md-10 articles">
+{{#if articles.length}}
+    <h3>my articles</h3>
+    {{#each articles as |article|}}
+    {{> articles}}
+    {{/each}}
+    {{else}}
+    <p>click below to write your first article!</p>
+{{/if}}
+</div>
+
+<a href="/api/dashboard/write">write something new</a>
