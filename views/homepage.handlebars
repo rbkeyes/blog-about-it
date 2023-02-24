@@ -1,8 +1,17 @@
 <section class="recent">
 
-<h3>recent posts</h3>
-<section class="blog-posts">
-{{> articles}}
-</section>
+    <h3>recent posts</h3>
+    <section class="blog-posts">
+
+        {{#if blogs.length}}
+                {{#each blogs as |blog|}}
+      
+
+                {{> content}}
+
+                {{/each}}
+        {{/if}}
+        </div>
+    </section>
 
 </section>

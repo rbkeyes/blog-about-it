@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Article, Comment } = require('../../models');
+const { User, Content, Comment } = require('../../models');
 
 // 🦄 added to check that users were added properly 🦄
 router.get('/users', async (req, res) => {
@@ -12,10 +12,17 @@ router.get('/users', async (req, res) => {
 });
 
 // 🦄 test route to be able to check if post /publish is working 🦄
-router.get('/recent', async (req, res) => {
+router.get('/content', async (req, res) => {
     try {
-        const recentContent = await Article.findAll();
-        res.status(200).json(recentContent);
+        const contentsData = await Content.findAll({
+            include: [
+              {
+                model: User,
+                attributes: ['username'],
+              }
+            ]
+          });
+        res.status(200).json(contentsData);
 
     } catch (err) {
         console.log(err);

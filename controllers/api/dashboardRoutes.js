@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Article, Comment } = require('../../models');
+const { User, Content, Comment } = require('../../models');
 const withAuth = require('../../utils/auth')
 
 router.get('/', withAuth, async (req, res) => {
@@ -26,7 +26,7 @@ router.get('/write', withAuth, async (req, res) => {
 
 router.post('/publish', withAuth, async (req,res) => {
     try {
-        const newContent = await Article.create({
+        const newContent = await Content.create({
             ...req.body,
             user_id: req.session.user_id,
             logged_in: req.session.logged_in,
