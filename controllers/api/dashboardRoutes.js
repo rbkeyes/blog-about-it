@@ -24,6 +24,16 @@ router.get('/write', withAuth, async (req, res) => {
     };
 });
 
+router.post('/publish', withAuth, async (req,res) => {
+    try {
+        let newBlog = await Article.create({
+
+        })
+    } catch (err) {
+        res.status(400).json(err);
+    };
+});
+
 
 
 
