@@ -34,6 +34,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
     try {
+        console.log(req.body);
         const userData = await User.create(req.body);
 
         req.session.save(() => {
@@ -41,6 +42,8 @@ router.post('/signup', async (req, res) => {
             req.session.logged_in = true;
 
             res.status(200).json(userData);
+            console.log(userData);
+
         });
 
     } catch (err) {
@@ -58,6 +61,8 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+
 
 
 module.exports = router;

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// const { Project, User } = require('../models');
+const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
   
       // Pass serialized data and session flag into template
       res.render('homepage', { 
+        id: req.session.id,
         logged_in: req.session.logged_in 
       });
     } catch (err) {
@@ -36,9 +37,7 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
   });
+  
 
-  router.get('/dashboard', withAuth, async (req, res) => {
-
-  })
 
   module.exports = router;
