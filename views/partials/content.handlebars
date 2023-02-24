@@ -1,12 +1,9 @@
 <div class="col-md-6 project-list">
-  <h3>{{{title}}}</h3>
+  <h3><a href="/blog/{{title}}">{{{title}}}</a></h3>
   <h4>Posted by {{{user.username}}} on {{{format_date date_created}}}.</h2>
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/blog/{{title}}">{{{text}}}</a></h4>
+        {{{body}}}
       </div>
-      {{!-- <div class="col-md-4">
-        <button class="btn btn-sm" data-id="{{id}}">DELETE</button>
-      </div> --}}
     </div>
 </div>

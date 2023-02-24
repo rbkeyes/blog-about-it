@@ -19,11 +19,13 @@
       {{/if}}
       <nav>
         <a href="/">home</a>
-        <a href="/api/dashboard">dashboard</a>
-        <!-- Conditionally render login or logout links -->
+
+        <!-- Conditionally render login or logout links, add link for user dashboard -->
         {{#if logged_in}}
+        <a href="/api/dashboard/{{user_id}}">dashboard</a>
         <button class="no-button" id="logout">logout</button>
         {{else}}
+        <a href="/login">dashboard</a>
         <a href="/login">login</a>
         {{/if}}
       </nav>

@@ -1,8 +1,8 @@
 <div class="col-md-10 articles">
-{{#if articles.length}}
-    <h3>my articles</h3>
-    {{#each articles as |article|}}
-    {{> articles}}
+{{#if blogs.length}}
+    <h3>my entries</h3>
+    {{#each blogs as |blog|}}
+    {{> content}}
     {{/each}}
     {{else}}
     <p>click below to write your first article!</p>
