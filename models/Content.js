@@ -35,7 +35,6 @@ Content.init(
   {
     sequelize,
     timestamps: false,
-    // createdAt and/or updatedAt?
     freezeTableName: true,
     underscored: true,
     modelName: 'content',
