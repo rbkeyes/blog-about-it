@@ -3,7 +3,7 @@ const commentFormHandler = async (event) => {
     event.preventDefault();
 
     // get elements from document
-    const comment = document.querySelector('.form-comment');
+    const comment = document.querySelector('.form-input');
     const input = comment.value.trim();
     // get content_id from name attribute (included in handlebars render)
     const content_id = comment.getAttribute('name');
