@@ -29,9 +29,6 @@ router.get('/:id', withAuth, async (req, res) => {
         // blog contents
         const blog = contentsData.get({ plain: true });
         console.log({blog});
-        // get comments array from blog
-        // const comments = blogs.comment;
-        // console.log(comments);
         const comments = contentsData.comments.map((comment) => comment.get({plain:true}));
         console.log({comments});
 
@@ -51,42 +48,46 @@ router.get('/:id', withAuth, async (req, res) => {
 // req.params.id = content.id
 router.get('/write/:id', withAuth, async (req, res) => {
     try {
-        const contentsData = await Content.findAll({
+        const contentsData = await Content.findByPk(req.params.id, {
             include: [
                 {
-                    model: User,
-                    attributes: ['username'],
+                  model: User,
+                  attributes: ['username'],
                 },
                 {
-                    model: Comment,
-                    attributes: ['input', 'user_id']
-                }
+                  model: Comment,
+                  include: [{
+                    model: User,
+                    attributes: ['username'],
+                  }],
+                  attributes: ['input', 'date_created'], 
+                },
             ],
-            where: {
-                id: req.params.id,
-            }
-        });
-        res.json(contentsData);
+            });
         // 404 status if no contentsData
         if (!contentsData) {
             res.status(404).json('No contents to display');
         };
-        const blogs = contentsData.map((blog) => blog.get({ plain: true }));
-        console.log(blogs);
-        res.render('dashboard', {
+        // blog contents
+        const blog = contentsData.get({ plain: true });
+        console.log({blog});
+        const comments = contentsData.comments.map((comment) => comment.get({plain:true}));
+        console.log({comments});
+
+        res.render('write-comment', {
             write: true,
-            blogs,
+            blog,
+            comments,
             user_id: req.session.user_id,
             logged_in: req.session.logged_in
         });
-        console.log(commentData);
     } catch (err) {
         res.status(500).json(err);
     };
 });
 
 // req.params.id = content.id
-router.post('/:content-id', async (req, res) => {
+router.post('/:id', async (req, res) => {
     try {
         const commentData = await Comment.create({
             ...req.body,
