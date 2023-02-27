@@ -18,7 +18,7 @@ const blogFormHandler = async (event) => {
     try {
         // fetch route if there is a title & body
         if (title && body) {
-            const response = await fetch('/api/dashboard/publish', {
+            const response = await fetch(`/api/dashboard/publish/${user_id}`, {
                 method: 'POST',
                 body: JSON.stringify({ title, body }),
                 headers: { 'Content-Type': 'application/json' }

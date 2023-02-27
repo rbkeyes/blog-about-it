@@ -5,6 +5,7 @@ const commentFormHandler = async (event) => {
     // get elements from document
     const comment = document.querySelector('.form-comment');
     const input = comment.value.trim();
+    // get content_id from name attribute (included in handlebars render)
     const content_id = comment.getAttribute('name');
     console.log(comment);
     console.log(input);
@@ -16,14 +17,14 @@ const commentFormHandler = async (event) => {
         if (input) {
             const response = await fetch(`/api/comment/${content_id}`, {
                 method: 'POST',
-                body: JSON.stringify({ comment_body, content_id }),
+                body: JSON.stringify({ input }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
             if (response.ok) {
                 console.log(response);
                 console.log('Success!')
-                window.location.href=`/api/comment/${content_id}`;
+                window.location.href = `/api/comment/${content_id}`;
                 return;
             };
         };

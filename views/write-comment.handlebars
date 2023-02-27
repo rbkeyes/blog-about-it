@@ -1,0 +1,20 @@
+<div class="col-md-10 articles">
+    {{!-- <h3>Add comment:</h3> --}}
+    {{#with blog}}
+    {{> content}}
+    {{/with}}
+    {{#if comments.length}}
+    {{#each comments as |comment|}}
+    {{> comments}}
+    {{/each}}
+    {{else}}
+    <p>Be the first to add a comment!</p>
+    {{/if}}
+
+</div>
+
+{{#if write}}
+{{> comment-form}}
+{{else}}
+<a href="/api/dashboard/write/{{id}}">add a comment</a>
+{{/if}}

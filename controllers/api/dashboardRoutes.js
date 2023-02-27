@@ -4,14 +4,14 @@ const withAuth = require('../../utils/auth')
 
 // user dashboard by user.id
 router.get('/:id', withAuth, async (req, res) => {
-
+    try {
     // get content from database, incuding user name that matches user_id
 const contentsData = await Content.findAll({
-    include: 
+    include: [
     {
         model: User,
         attributes: ['username'],
-    }, 
+    }], 
     where:
     {
         user_id: req.params.id
@@ -24,15 +24,12 @@ const contentsData = await Content.findAll({
   };
     const blogs = contentsData.map((blog) => blog.get({ plain: true }));
     console.log(blogs);
-    try {
         res.render("dashboard", {
             blogs,
             user_id: req.session.user_id,
             logged_in: req.session.logged_in
         }
         );
-        // const userData = User.findByPk();
-        // res.json(userData);
     } catch (err) {
         res.status(500).json(err);
     };
@@ -40,7 +37,7 @@ const contentsData = await Content.findAll({
 
 router.get('/write/:id', withAuth, async (req, res) => {
     try {
-        res.render('write', {
+        res.render('write-content', {
             logged_in: req.session.logged_in
         })
     } catch (err) {
@@ -48,7 +45,7 @@ router.get('/write/:id', withAuth, async (req, res) => {
     };
 });
 
-router.post('/publish', withAuth, async (req, res) => {
+router.post('/publish/:id', withAuth, async (req, res) => {
     try {
         const newContent = await Content.create({
             ...req.body,
