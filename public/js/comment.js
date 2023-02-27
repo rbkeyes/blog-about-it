@@ -1,4 +1,4 @@
-// event handler for publishing new blog post
+// event handler for posting a comment
 const commentFormHandler = async (event) => {
     event.preventDefault();
 
@@ -13,7 +13,7 @@ const commentFormHandler = async (event) => {
 
 
     try {
-        // fetch route if there is a title & body
+        // fetch route if there is comment input
         if (input) {
             const response = await fetch(`/api/comment/${content_id}`, {
                 method: 'POST',

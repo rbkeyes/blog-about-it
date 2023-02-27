@@ -1,23 +1,29 @@
-<div class="col-md-10 articles">
-    {{!-- <h3>Add comment:</h3> --}}
-    {{#with blog}}
-    {{> content}}
-    {{/with}}
-    {{#if comments.length}}
-    {{#each comments as |comment|}}
-    {{> comments}}
-    {{/each}}
-    {{else}}
-    <p>Be the first to add a comment!</p>
-    {{/if}}
+<div class="col-md-10 comment">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            {{!-- render blog content --}}
+            {{#with blog}}
+            {{> content}}
+            {{/with}}
 
+            {{#if write}}
+                {{> comment-form}}          {{else}}
+
+            {{!-- if comments, render each comment --}}
+            {{#if comments.length}}
+            {{#each comments as |comment|}}
+            {{> comments}}
+            {{/each}}
+            {{!-- link to add comment --}}
+            <a href="/api/comment/write/{{blog.id}}">Click here to add a comment</a>
+            {{else}}
+            <a href="/api/comment/write/{{blog.id}}">Be the first to add a comment!</a>
+
+            {{/if}}
+                    {{/if}}
+
+
+
+        </div>
+    </div>
 </div>
-
-{{#if write}}
-<form class="form blog-form">
-{{> comment-form}}
-</form>
-{{else}}
-<a href="/api/comment/write/{{blog.id}}">Click here to add a comment</a>
-{{/if}}
-
