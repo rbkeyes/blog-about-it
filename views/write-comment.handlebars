@@ -1,13 +1,15 @@
 <div class="col-md-10 comment">
     <div class="row mt-4">
         <div class="col-md-12">
+            
             {{!-- render blog content --}}
             {{#with blog}}
             {{> content}}
             {{/with}}
 
+            {{!-- render comment form if indicated by write: true --}}
             {{#if write}}
-                {{> comment-form}}          {{else}}
+            {{> comment-form}} {{else}}
 
             {{!-- if comments, render each comment --}}
             {{#if comments.length}}
@@ -17,12 +19,11 @@
             {{!-- link to add comment --}}
             <a href="/api/comment/write/{{blog.id}}">Click here to add a comment</a>
             {{else}}
+            {{!-- if no comments, link to add first comment --}}
             <a href="/api/comment/write/{{blog.id}}">Be the first to add a comment!</a>
 
             {{/if}}
-                    {{/if}}
-
-
+            {{/if}}
 
         </div>
     </div>

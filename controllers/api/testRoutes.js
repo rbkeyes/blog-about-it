@@ -61,6 +61,16 @@ router.get('/comment/:id', async (req, res) => {
     };
 });
 
+router.get('/update/:id', async (req, res) => {
+    try {
+        const contentData = await Content.findByPk(req.params.id);
+        res.json(contentData);
+        console.log(contentData);
+    } catch (err) {
+        res.status(500).json(contentData);
+    }
+})
+
 router.post('/comment/:id', async (req, res) => {
     try {
         const commentData = await Comment.create({
@@ -75,5 +85,37 @@ router.post('/comment/:id', async (req, res) => {
     };
 });
 
+router.put('/update/:id', async (req, res) => {
+    try {
+        console.log(req.body);
+        const updatedContent = await Content.update(
+            {
+                ...req.body,
+            }, {
+            where: {
+                id: req.params.id,
+            }
+        });
+        res.json("Post successfully updated");
+        console.log(updatedContent);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const deleteContent = await Content.destroy(
+           {
+            where: {
+                id: req.params.id,
+            }
+        });
+        res.json("content deleted");
+        // console.log(updatedContent);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;

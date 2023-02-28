@@ -1,9 +1,21 @@
 <div class="col-md-12 project-list">
-  <h3><a href="/api/comment/{{id}}">{{{title}}}</a></h3>
+  <h3>
+    {{#if body}}
+    {{!-- comment route to add comment - from home only --}}
+    <a href="/api/comment/{{id}}">
+    {{else}}
+    {{!-- dashboard route to update post - from dashboard only --}}
+    <a href="/api/dashboard/update/{{id}}">
+    {{/if}}
+    {{{title}}}</a></h3>
   <h4>Posted by {{{user.username}}} on {{{format_date date_created}}}.</h4>
+  
   <div class="row mb-2">
+      {{#if body}}
     <div class="col-md-12">
       <p>{{{body}}}</p>
     </div>
+    {{else}}
+    {{/if}}
   </div>
 </div>

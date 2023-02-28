@@ -33,7 +33,6 @@ router.get('/:id', withAuth, async (req, res) => {
         console.log({comments});
 
         res.render('write-comment', {
-            write: false,
             blog,
             comments,
             user_id: req.session.user_id,
