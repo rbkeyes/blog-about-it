@@ -13,7 +13,7 @@ const signupFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        window.location.href='/api/dashboard/';
+        window.location.href=`/`;
       } else {
         alert('Failed to sign up.');
       }
