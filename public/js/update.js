@@ -1,17 +1,12 @@
-// event handler for publishing new blog post
+// event handler for updating an existing post by content.id
 const updateFormHandler = async (event) => {
     event.preventDefault();
 
     // get elements from document
     const updateEl = document.querySelector('.update-title');
-    console.log(updateEl);
     const user_id = updateEl.getAttribute('name');
     const title = updateEl.value.trim();
     const body = document.querySelector('.update-body').value.trim();
-
-    console.log(user_id);
-    console.log(title);
-    console.log(body);
 
     // // get content id from pathname
     const getContentId = () => {
@@ -20,7 +15,6 @@ const updateFormHandler = async (event) => {
         };
     
     const id = getContentId();
-    console.log(id);
 
     try {
         // fetch route if there is a title & body
@@ -40,9 +34,47 @@ const updateFormHandler = async (event) => {
         };
     } catch (err) {
         console.error(err);
-        alert('Unable to publish');
+        alert('Unable to update');
         return;
     };
 };
 
 document.querySelector('.update-form').addEventListener('submit', updateFormHandler);
+
+
+// event handler to delete post by content.id
+const deletePostHandler = async(event) => {
+    event.preventDefault();
+
+    // get user_id
+    const updateEl = document.querySelector('.update-title');
+    const user_id = updateEl.getAttribute('name');
+    // get content id
+    const getContentId = () => {
+        const routeArr = window.location.pathname.split('/');
+            return routeArr[routeArr.length-1];
+        };
+    
+    const id = getContentId();
+    console.log(id);
+
+    try {
+            const response = await fetch(`/api/dashboard/delete/${id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (response.ok) {
+                console.log(response);
+                console.log('Success!')
+                window.location.href=`/api/dashboard/${user_id}`;
+                return;
+            };
+    } catch (err) {
+        console.error(err);
+        alert('Unable to delete');
+        return;
+    };
+};
+
+document.querySelector('.delete-entry').addEventListener('submit', deletePostHandler);

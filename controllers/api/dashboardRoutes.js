@@ -94,8 +94,7 @@ router.put('/update/:id', withAuth, async (req, res) => {
             }
         },
         );
-        res.status(200).json("success!")
-        console.log("update successful")
+        res.status(200).json("update successful")
     } catch (err) {
         res.status(400).json(err);
         console.log(err);
@@ -112,7 +111,6 @@ router.delete('/delete/:id', async (req, res) => {
             }
         });
         res.json("content deleted");
-        // console.log(updatedContent);
     } catch (err) {
         res.status(400).json(err);
     }
