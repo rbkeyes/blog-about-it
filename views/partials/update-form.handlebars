@@ -1,5 +1,5 @@
+{{!-- update post --}}
 <form class="form update-form">
-
   <div class="form-group">
     <label for="update-input">Update:</label>
     <textarea class="update-title" name="{{user_id}}">{{{title}}}</textarea>
@@ -7,8 +7,15 @@
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">update</button>
-    <button type="delete" class="btn btn-primary">delete</button>
   </div>
+</form>
+
+{{!-- delete post --}}
+<form class="form delete-entry">
+  <div class="form-group">
+    <button type="delete" class="btn btn-primary">submit</button>
+  </div>
+
 </form>
 
 <script src="/js/update.js"></script>
