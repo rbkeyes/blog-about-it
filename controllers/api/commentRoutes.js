@@ -14,11 +14,11 @@ router.get('/:id', withAuth, async (req, res) => {
                 },
                 {
                   model: Comment,
+                  attributes: ['input', 'date_created'], 
                   include: [{
                     model: User,
                     attributes: ['username'],
                   }],
-                  attributes: ['input', 'date_created'], 
                 },
             ],
             });
@@ -28,9 +28,9 @@ router.get('/:id', withAuth, async (req, res) => {
         };
         // blog contents
         const blog = contentsData.get({ plain: true });
-        console.log({blog});
+        // console.log({blog});
         const comments = contentsData.comments.map((comment) => comment.get({plain:true}));
-        console.log({comments});
+        // console.log({comments});
 
         res.render('write-comment', {
             blog,
