@@ -4,13 +4,10 @@ const commentFormHandler = async (event) => {
 
     // get elements from document
     const comment = document.querySelector('.form-input');
+    // get value of input
     const input = comment.value.trim();
     // get content_id from name attribute (included in handlebars render)
     const content_id = comment.getAttribute('name');
-    console.log(comment);
-    console.log(input);
-    console.log(content_id);
-
 
     try {
         // fetch route if there is comment input
