@@ -1,0 +1,26 @@
+{{!-- update post --}}
+<form class="form update-form">
+
+    <div class="form-group">
+        <label for="update-title">Title:</label>
+        <input class="form-input" id="update-title" type="text" placeholder="{{title}}"></input>
+    </div>
+    <div class="form-group">
+        <label for="update-body">Entry:</label>
+        <textarea class="form-input" id="update-body">{{{body}}}</textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">update post</button>
+    </div>
+
+</form>
+
+{{!-- delete post --}}
+<form class="form delete-entry">
+    <div class="form-group">
+        <button type="delete" class="btn btn-primary">delete post</button>
+    </div>
+
+</form>
+
+<script src="/js/update.js"></script>
