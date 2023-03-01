@@ -39,7 +39,8 @@ router.get('/', withAuth, async (req, res) => {
 // write new post
 router.get('/write', withAuth, async (req, res) => {
     try {
-        res.render('write-content', {
+        res.render('dashboard', {
+            write: true,
             user_id: req.session.user_id,
             logged_in: req.session.logged_in
         })

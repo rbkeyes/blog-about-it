@@ -5,22 +5,30 @@
     {{!-- render update-form when update:true --}}
     <div class="col-md-12 update">
         <div class="row mt-4">
-                {{#with content}}
-                {{> update}}
-                {{/with}}
+            {{#with content}}
+            {{> update}}
+            {{/with}}
         </div>
     </div>
 
     {{else}}
+    {{#if write}}
+    <div class="col-md-12 content">
+        <div class="row mt-4">
+            {{!-- <div class="col-md-12"> --}}
+
+                {{> content-form}}
+
+            {{!-- </div> --}}
+        </div>
+    </div>
+    {{/if}}
     {{!-- otherwise render titles of all content by user --}}
     {{#if blogs.length}}
     {{#each blogs as |blog|}}
     {{> content}}
     {{/each}}
-    {{else}}
-    <p>click below to write your first article!</p>
+<a href="/api/dashboard/write">+</a>
     {{/if}}
     {{/if}}
 </section>
-
-<a href="/api/dashboard/write">write something new</a>
