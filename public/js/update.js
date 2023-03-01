@@ -3,10 +3,10 @@ const updateFormHandler = async (event) => {
     event.preventDefault();
 
     // get elements from document
-    const updateEl = document.querySelector('.update-title');
+    const updateEl = document.querySelector('#update-title');
     const user_id = updateEl.getAttribute('name');
-    const title = updateEl.value.trim();
-    const body = document.querySelector('.update-body').value.trim();
+    let title = updateEl.value.trim();
+    const body = document.querySelector('#update-body').value.trim();
 
     // // get content id from pathname
     const getContentId = () => {
@@ -17,6 +17,9 @@ const updateFormHandler = async (event) => {
     const id = getContentId();
 
     try {
+        if (!title) {
+            title = updateEl.getAttribute('placeholder');
+        }
         // fetch route if there is a title & body
         if (title && body) {
             const response = await fetch(`/api/dashboard/update/${id}`, {
