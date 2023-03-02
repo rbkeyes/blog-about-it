@@ -1009,12 +1009,14 @@ a:hover {
 }
 
 .btn.btn-primary {
-  background-color: #2d3e50;
-  color: #d9e9e8;
+  background-color: #4c4378;
+  color: #e6cdf2;
 }
 
 .btn.btn-primary:hover {
-  background-color: #57779a;
+  background-color: #36314f;
+  box-shadow: 0 0 10px var(--secondary);
+
 }
 
 .btn.btn-danger {
