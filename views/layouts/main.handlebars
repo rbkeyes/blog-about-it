@@ -11,24 +11,25 @@
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
+    <header class="display-flex justify-space-between align-center">
       <h1>blog about it</h1>
       <nav>
         <a href="/" id="home">home</a>
+        <a href="/api/dashboard" id="dashboard">dashboard</a>
 
         <!-- Conditionally render login or logout links, add link for user dashboard -->
         {{#if logged_in}}
-        <a href="/api/dashboard/{{user_id}}" id="dashboard">dashboard</a>
-        <button class="no-button" id="logout">logout</button>
+        <a href="/" id="logout">logout</a>
         {{else}}
-        <a href="/login">dashboard</a>
         <a href="/login">login</a>
         {{/if}}
       </nav>
     </header>
-    <main class="container container-fluid mt-5">
+    <main>
+      <section class="container container-fluid">
       <!-- Render the sub layout -->
       {{{ body }}}
+      </section>
     </main>
     <footer>
     </footer>

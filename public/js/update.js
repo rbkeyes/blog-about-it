@@ -3,9 +3,7 @@ const updateFormHandler = async (event) => {
     event.preventDefault();
 
     // get elements from document
-    const updateEl = document.querySelector('#update-title');
-    const user_id = updateEl.getAttribute('name');
-    let title = updateEl.value.trim();
+    let title = document.querySelector('#update-title').value.trim();
     const body = document.querySelector('#update-body').value.trim();
 
     // // get content id from pathname
@@ -18,7 +16,7 @@ const updateFormHandler = async (event) => {
 
     try {
         if (!title) {
-            title = updateEl.getAttribute('placeholder');
+            title = document.querySelector('#update-title').getAttribute('placeholder');
         }
         // fetch route if there is a title & body
         if (title && body) {
@@ -31,7 +29,7 @@ const updateFormHandler = async (event) => {
             if (response.ok) {
                 console.log(response);
                 console.log('Success!')
-                window.location.href=`/api/dashboard/${user_id}`;
+                window.location.href=`/api/dashboard`;
                 return;
             };
         };
@@ -49,9 +47,6 @@ document.querySelector('.update-form').addEventListener('submit', updateFormHand
 const deletePostHandler = async(event) => {
     event.preventDefault();
 
-    // get user_id
-    const updateEl = document.querySelector('.update-title');
-    const user_id = updateEl.getAttribute('name');
     // get content id
     const getContentId = () => {
         const routeArr = window.location.pathname.split('/');
@@ -68,9 +63,8 @@ const deletePostHandler = async(event) => {
             });
 
             if (response.ok) {
-                console.log(response);
-                console.log('Success!')
-                window.location.href=`/api/dashboard/${user_id}`;
+                console.log("success!")
+                window.location.href=`/api/dashboard`;
                 return;
             };
     } catch (err) {

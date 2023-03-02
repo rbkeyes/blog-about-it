@@ -2,8 +2,7 @@ const router = require('express').Router();
 const { User, Content, Comment } = require('../../models');
 const withAuth = require('../../utils/auth')
 
-// render content with available comments
-// req.params.id = content.id
+// render content with available comments (req.params.id = content.id)
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const contentsData = await Content.findByPk(req.params.id, {
@@ -32,7 +31,7 @@ router.get('/:id', withAuth, async (req, res) => {
         const comments = contentsData.comments.map((comment) => comment.get({plain:true}));
         // console.log({comments});
 
-        res.render('write-comment', {
+        res.render('homepage', {
             blog,
             comments,
             user_id: req.session.user_id,
@@ -43,8 +42,7 @@ router.get('/:id', withAuth, async (req, res) => {
     };
 });
 
-// render comment form
-// req.params.id = content.id
+// render comment form (req.params.id = content.id)
 router.get('/write/:id', withAuth, async (req, res) => {
     try {
         const contentsData = await Content.findByPk(req.params.id, {
@@ -73,7 +71,7 @@ router.get('/write/:id', withAuth, async (req, res) => {
         const comments = contentsData.comments.map((comment) => comment.get({plain:true}));
         console.log({comments});
 
-        res.render('write-comment', {
+        res.render('homepage', {
             write: true,
             blog,
             comments,

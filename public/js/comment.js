@@ -7,12 +7,19 @@ const commentFormHandler = async (event) => {
     // get value of input
     const input = comment.value.trim();
     // get content_id from name attribute (included in handlebars render)
-    const content_id = comment.getAttribute('name');
+    // // get content id from pathname
+    const getContentId = () => {
+        const routeArr = window.location.pathname.split('/');
+            return routeArr[routeArr.length-1];
+        };
+
+        const id = getContentId();
+
 
     try {
         // fetch route if there is comment input
         if (input) {
-            const response = await fetch(`/api/comment/${content_id}`, {
+            const response = await fetch(`/api/comment/${id}`, {
                 method: 'POST',
                 body: JSON.stringify({ input }),
                 headers: { 'Content-Type': 'application/json' }
@@ -21,7 +28,7 @@ const commentFormHandler = async (event) => {
             if (response.ok) {
                 console.log(response);
                 console.log('Success!')
-                window.location.href = `/api/comment/${content_id}`;
+                window.location.href = `/api/comment/${id}`;
                 return;
             };
         };

@@ -1,12 +1,39 @@
-<div class="col-md-10">
-    <h3>My Dashboard</h3>
-{{#if blogs.length}}
+<section class="my-dashboard">
+    <h3 class="dashboard-header">My Dashboard</h3>
+
+    {{#if update}}
+    {{!-- render update-form when update:true --}}
+    <div class="col-md-12 update">
+        <div class="row mt-4">
+            {{#with content}}
+            {{> update}}
+            {{/with}}
+        </div>
+    </div>
+
+    {{else}}
+    {{!-- render form to write new post --}}
+    {{#if write}}
+    <div class="col-md-12 content">
+        <div class="row mt-4">
+                {{> content-form}}
+        </div>
+    </div>
+
+    {{/if}}
+    {{!-- otherwise render titles of all content by user --}}
+    {{#if blogs.length}}
     {{#each blogs as |blog|}}
     {{> content}}
     {{/each}}
-    {{else}}
-    <p>click below to write your first article!</p>
-{{/if}}
-</div>
+    
+    <a href="/api/dashboard/write">
+    <div class="write">
+    write something new
+    </div>
+    </a>
+    {{/if}}
 
-<a href="/api/dashboard/write/{{user_id}}">write something new</a>
+
+    {{/if}}
+</section>
