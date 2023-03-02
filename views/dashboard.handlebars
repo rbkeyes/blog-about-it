@@ -12,23 +12,28 @@
     </div>
 
     {{else}}
+    {{!-- render form to write new post --}}
     {{#if write}}
     <div class="col-md-12 content">
         <div class="row mt-4">
-            {{!-- <div class="col-md-12"> --}}
-
                 {{> content-form}}
-
-            {{!-- </div> --}}
         </div>
     </div>
+
     {{/if}}
     {{!-- otherwise render titles of all content by user --}}
     {{#if blogs.length}}
     {{#each blogs as |blog|}}
     {{> content}}
     {{/each}}
-<a href="/api/dashboard/write">+</a>
+    
+    <a href="/api/dashboard/write">
+    <div class="write">
+    write something new
+    </div>
+    </a>
     {{/if}}
+
+
     {{/if}}
 </section>

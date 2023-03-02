@@ -4,29 +4,32 @@
     {{#each blogs as |blog|}}
     {{> content}}
     {{/each}}
-    <p class="dashboard-link">Go to <a href="/api/dashboard">dashboard</a> to add, edit, or delete a post.</p>
+    <a href="/api/dashboard">
+    <div class="write">Go to dashboardto add, edit, or delete a post.</div>
+    </a> 
 
     {{else}}
     {{!-- render single blog entry with comments --}}
-    <div class="col-md-10 comment">
-        <div class="row mt-4">
-            <div class="col-md-12">
+    {{!-- <div class="col-md-10 comment"> --}}
 
-                {{!-- render blog content --}}
-                {{#with blog}}
-                {{> content}}
-                {{/with}}
+        {{!-- render blog content --}}
+        {{#with blog}}
+        {{> content}}
+        {{/with}}
 
-                {{!-- render comment form if indicated by write: true --}}
-                {{#if write}}
-                {{> comment-form}}
-                {{/if}}
+        {{!-- render comment form if indicated by write: true --}}
+        {{#if write}}
+        {{> comment-form}}
 
-                <a href="/api/comment/write/{{blog.id}}">Add a comment</a>
-
-            </div>
+        {{else}}
+            
+        {{!-- render "add a comment" link if not on comment form page --}}
+        <a href="/api/comment/write/{{blog.id}}">
+        <div class="write">add a comment
         </div>
-    </div>
+        </a>
+        {{/if}}
+    {{!-- </div> --}}
     {{/if}}
 
 

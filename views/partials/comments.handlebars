@@ -1,8 +1,8 @@
-<div class="col-md-12">
-    <div class="row mb-2">
-        <div class="col-md-12">
-            <p>{{{input}}}</p>
-            <p>comment by {{{user.username}}} on {{{format_date date_created}}}</p>
-        </div>
+{{!-- render comments to content card --}}
+
+<div class="comment-card">
+    <div class="item-flex">
+    <p class="input">{{{input}}}</p>
+    <p class="signature">-- {{{user.username}}} {{{format_date date_created}}}</p>
     </div>
 </div>

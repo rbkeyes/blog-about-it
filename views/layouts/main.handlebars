@@ -15,11 +15,11 @@
       <h1>blog about it</h1>
       <nav>
         <a href="/" id="home">home</a>
+        <a href="/api/dashboard" id="dashboard">dashboard</a>
 
         <!-- Conditionally render login or logout links, add link for user dashboard -->
         {{#if logged_in}}
-        <a href="/api/dashboard" id="dashboard">dashboard</a>
-        <button class="no-button" id="logout">logout</button>
+        <a href="/" id="logout">logout</a>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
