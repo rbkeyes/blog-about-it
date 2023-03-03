@@ -2,8 +2,9 @@
   --light: #e6cdf2;
   --dark: #36314f;
   --mid: #4c4378;
-  --secondary: #bf9cec;
-  --quatrinary: #c0beea;
+  --header: #9b5dec;
+  --background: #c0beea;
+  --highlight: #9747ff;
 }
 
 body {
@@ -13,7 +14,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
-  background-color: var(--quatrinary);
+  background-color: var(--background);
   box-sizing: border-box;
 }
 
@@ -22,15 +23,19 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 a:visited {
   color: inherit;
 }
 
 header {
-  padding: 1.5rem;
+  padding: 2rem;
   text-align: center;
-  background: var(--dark);
-  color: var(--quatrinary);
+  background: var(--header);
+  color: var(--dark);
 }
 
 main {
@@ -44,6 +49,7 @@ nav {
 }
 
 nav a {
+  font-size: 1.25rem;;
   color: var(--light);
   padding: 14px 20px;
   text-decoration: none;
@@ -52,9 +58,9 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--secondary);
-  background-color: var(--primary);
-  box-shadow: 0 0 10px var(--secondary);
+  color: var(--mid);
+  background-color: var(--highlight);
+  box-shadow: 0 0 10px var(--highlight);
 }
 
 /* CARDS */
@@ -102,12 +108,12 @@ form {
   width: 90vw;
   padding: 0;
   border: solid 5px var(--dark);
-  margin: 1.5rem;
+  margin: 2rem auto;
   border-radius: 10px;
 }
 
 .content-card:hover {
-  box-shadow: 0 0 10px 5px var(--secondary);
+  box-shadow: 0 0 10px 5px var(--header);
 }
 
 .content-card a {
@@ -130,16 +136,27 @@ form {
   text-align: center;
 }
 
-.comments-header {
-  /* padding: 1rem; */
-  margin: 2rem 5rem 1rem;
+.comments-section {
+  width: 90vw;
+  padding: 1.5rem;
+  border: solid 3px var(--mid);
+  margin: auto;
+  border-radius: 10px;
+  align-items: center;
+  color: var(--light);
+  background-color: var(--mid);
 }
+
+.comments-header {
+  margin-bottom: 2rem;
+}
+
 .comment-card {
-  width: 80vw;
+  width: 100%;
+  color: var(--mid);
   background-color: var(--light);
   padding: 1rem;
-  margin: .5rem 5rem;
-  border: solid 5px var(--tertiary);
+  margin: auto;
   border-radius: 10px;
 }
 
@@ -148,6 +165,7 @@ form {
   align-items: center;
   justify-content: space-between;
 }
+
 .comment-card p {
   display: inline;
   justify-content: space-between;
@@ -168,10 +186,11 @@ form {
   padding: .5rem;
   margin: 2rem 5rem;
   border-radius: 10px;
-  color: var(--quatrinary);
-  background-color: var(--dark);
+  color: var(--light);
+  background-color: var(--mid);
 }
 
 .write:hover {
-  box-shadow: 0 0 10px var(--secondary);
+  box-shadow: 0 0 10px var(--highlight);
 }
+
