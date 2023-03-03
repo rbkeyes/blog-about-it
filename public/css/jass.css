@@ -1010,19 +1010,23 @@ a:hover {
 }
 
 .btn.btn-primary {
+  width: 15rem;
   background-color: #4c4378;
   color: #e6cdf2;
+  margin-top: .5rem;
 }
 
 .btn.btn-primary:hover {
   background-color: #36314f;
-  box-shadow: 0 0 10px var(--secondary);
+  box-shadow: 0 0 10px #c0beea;
 
 }
 
 .btn.btn-danger {
   background-color: #4c4378;
   color: #e6cdf2;
+  margin-top: .5rem;
+
 }
 
 .btn.btn-danger:hover {

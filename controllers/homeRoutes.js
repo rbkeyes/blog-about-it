@@ -27,6 +27,7 @@ console.log(blogs);
 
       // Pass serialized data and session flag into template
       res.render('homepage', { 
+        home: true,
         blogs,
         user_id: req.session.user_id,
         logged_in: req.session.logged_in, 

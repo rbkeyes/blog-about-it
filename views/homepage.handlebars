@@ -7,31 +7,33 @@
 
 
     {{else}}
+    {{#unless home}}
     {{!-- render single blog entry with comments --}}
-{{!-- {{#if comments}} --}}
     {{!-- render blog content --}}
     {{#with blog}}
     {{> content}}
-    
+
     {{/with}}
     {{!-- render comment form if indicated by write: true --}}
     {{#if write}}
     {{> comment-form}}
-{{else}}
-{{!-- render "add a comment" link if not on comment form page --}}
+    {{else}}
+    {{!-- render "add a comment" link if not on comment form page --}}
     <a href="/api/comment/write/{{blog.id}}">
         <div class="write">add a comment</div>
     </a>
     {{/if}}
-   
+    {{/unless}}
+
     {{/if}}
 
-{{!-- render on homepage only, not --}}
-{{#unless comments}}
+
+    {{!-- render on homepage only, not --}}
+    {{#unless comments}}
     <a href="/api/dashboard">
-        <div class="write">Go to dashboardto add, edit, or delete a post.</div>
+        <div class="write">Go to dashboard to add, edit, or delete a post.</div>
     </a>
-{{/unless}}
+    {{/unless}}
 
 
 </section>

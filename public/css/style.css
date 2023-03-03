@@ -1,5 +1,5 @@
 :root {
-  --light: #e6cdf2;
+  --light: #dcd1e3;
   --dark: #36314f;
   --mid: #4c4378;
   --header: #9b5dec;
@@ -63,9 +63,17 @@ nav a:hover {
   box-shadow: 0 0 10px var(--highlight);
 }
 
+.comment-form, .content-form, .update-form {
+  padding: 1rem 2rem;
+  border: 2px solid var(--dark);
+  border-radius: 10px;
+  background-color: var(--light);
+}
+
 /* CARDS */
 .login-card {
   width: 50vw;
+  padding: 2rem;
   margin: 4rem;
   flex: 0 1 300px;
   border: 7px double var(--dark);
@@ -75,16 +83,12 @@ nav a:hover {
 }
 
 .login-card h2 {
-  padding-top: 2rem;
   text-align: center;
 }
 
 .login-card form {
-  width: 100%;
-}
-
-form {
-  padding: 1rem 2rem;
+  width: 90%;
+  margin: auto;
 }
 
 .login-card a:hover {
@@ -113,7 +117,7 @@ form {
 }
 
 .content-card:hover {
-  box-shadow: 0 0 10px 5px var(--header);
+  box-shadow: 0 0 10px 5px var(--light);
 }
 
 .content-card a {
@@ -140,7 +144,7 @@ form {
   width: 90vw;
   padding: 1.5rem;
   border: solid 3px var(--mid);
-  margin: auto;
+  margin: 2rem auto;
   border-radius: 10px;
   align-items: center;
   color: var(--light);
@@ -156,7 +160,7 @@ form {
   color: var(--mid);
   background-color: var(--light);
   padding: 1rem;
-  margin: auto;
+  margin: 1rem auto;
   border-radius: 10px;
 }
 
@@ -191,6 +195,10 @@ form {
 }
 
 .write:hover {
-  box-shadow: 0 0 10px var(--highlight);
+  box-shadow: 0 0 15px var(--light);
 }
 
+.delete-entry {
+  padding: 1rem 2rem;
+
+}
