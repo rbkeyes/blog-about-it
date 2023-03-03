@@ -38,6 +38,8 @@ The one bug I noticed that I was unable to fix is a delay in the homepage changi
 
 - [Tests](#tests)
 
+- [Contact](#contact)
+
 
 ## Installation
 
