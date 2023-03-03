@@ -67,6 +67,8 @@ Upon signing up or logging in, the user is directed to the homepage. Select a pr
 
 Users can view their own posts, write a new post, or delete previous posts from the dashboard page. 
 
+To logout, click "logout" in the nav links at the top of the page.
+
 
 ## Credits
 
