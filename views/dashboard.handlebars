@@ -30,12 +30,15 @@
 
     {{/if}}
 
+{{!-- hide link when not on write new post page --}}
+    {{#unless write}}
     <a href="/api/dashboard/write">
     <div class="write">
     write something new
     </div>
     </a>
-    
+    {{/unless}}
+
     {{/if}}
 
 

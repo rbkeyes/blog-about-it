@@ -30,10 +30,12 @@
 
 {{!-- if comments, render each comment --}}
 {{#if comments.length}}
+<section class="comments-section">
 <div class="comments-header">
   <h4>Comments</h4>
 </div>
 {{#each comments as |comment|}}
 {{> comments}}
 {{/each}}
+</section>
 {{/if}}
