@@ -67,10 +67,16 @@ Upon signing up or logging in, the user is directed to the homepage. Select a pr
 
 Users can view their own posts, write a new post, or delete previous posts from the dashboard page. 
 
+To logout, click "logout" in the nav links at the top of the page. User login will timeout automatically after 2 hours.
+
 
 ## Credits
 
 Coursework for the bootcamp was used as reference material in completing this project.
+
+[Handlebars.js](https://handlebarsjs.com/guide/) docs were used to aid in writing the templates and using helpers.
+
+I also used my group project, [Craft But Not Least](https://github.com/rbkeyes/craft-but-not-least), as reference for building routes and event handlers.
 
 No starter code was provided for this project.
 
